@@ -13,7 +13,7 @@ Ghostty 1.3 was the first release with an AppleScript dictionary, which is how t
 
 ## Install
 
-Download the latest `.alfredworkflow` from [Releases](https://github.com/ryan-token/alfred-ghostty-launch/releases) and double click it.
+Download the latest `.alfredworkflow` from [Releases](https://github.com/ryan-token/alfred-ghostty-launch-configs/releases) and double click it.
 
 ## Usage
 

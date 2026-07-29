@@ -231,8 +231,8 @@ Requires Ghostty 1.3 or later, which is the first version Alfred can drive direc
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.0</string>
 	<key>webaddress</key>
-	<string>https://github.com/ryan-token/alfred-ghostty-launch</string>
+	<string>https://github.com/ryan-token/alfred-ghostty-launch-configs</string>
 </dict>
 </plist>
