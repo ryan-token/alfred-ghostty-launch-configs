@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.ryantoken.ghostty-launch</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>0F9B1E42-7C55-4C3B-9C7E-1A6D5E2F0A11</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2B7D4C10-9E31-4F87-8D62-3C4A9B0E7D22</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2B7D4C10-9E31-4F87-8D62-3C4A9B0E7D22</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Edit this layout</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>5A3C8E77-1D42-4B90-A5F1-6E8B2C4D9F33</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2B7D4C10-9E31-4F87-8D62-3C4A9B0E7D22</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Ryan Token</string>
+	<key>description</key>
+	<string>Open saved Ghostty window, tab and split layouts</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Ghostty Launch Configurations</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>list.js</string>
+				<key>subtext</key>
+				<string>Open a saved Ghostty layout</string>
+				<key>title</key>
+				<string>Launch Configurations</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>0F9B1E42-7C55-4C3B-9C7E-1A6D5E2F0A11</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>launch.js</string>
+				<key>type</key>
+				<integer>8</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2B7D4C10-9E31-4F87-8D62-3C4A9B0E7D22</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>availableviaurlhandler</key>
+				<true/>
+				<key>triggerid</key>
+				<string>launch</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>5A3C8E77-1D42-4B90-A5F1-6E8B2C4D9F33</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>## Usage
+
+Browse your saved Ghostty layouts via the `layouts` keyword.
+
+- &lt;kbd&gt;↩&lt;/kbd&gt; Open the layout
+- &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt; Edit the layout's file
+
+A layout is a JSON file describing windows, tabs, splits, working directories and startup commands. They live in the folder set in the Workflow's Configuration, which defaults to `~/.config/alfred-ghostty-launch/configs`.
+
+The first time you run the workflow it offers to create that folder along with an example layout to edit.
+
+Layouts can also be opened from a script using the `launch` external trigger, passing the layout's file name without its extension.
+
+Requires Ghostty 1.3 or later, which is the first version Alfred can drive directly.
+</string>
+	<key>uidata</key>
+	<dict>
+		<key>0F9B1E42-7C55-4C3B-9C7E-1A6D5E2F0A11</key>
+		<dict>
+			<key>xpos</key>
+			<integer>60</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+		<key>2B7D4C10-9E31-4F87-8D62-3C4A9B0E7D22</key>
+		<dict>
+			<key>xpos</key>
+			<integer>340</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+		<key>5A3C8E77-1D42-4B90-A5F1-6E8B2C4D9F33</key>
+		<dict>
+			<key>xpos</key>
+			<integer>60</integer>
+			<key>ypos</key>
+			<integer>220</integer>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>layouts</string>
+				<key>placeholder</key>
+				<string>layouts</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Type this in Alfred to browse your layouts.</string>
+			<key>label</key>
+			<string>Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>~/.config/alfred-ghostty-launch/configs</string>
+				<key>placeholder</key>
+				<string>~/.config/alfred-ghostty-launch/configs</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Folder holding your .json layout files.</string>
+			<key>label</key>
+			<string>Layouts Folder</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>configs_dir</string>
+		</dict>
+	</array>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/ryan-token/alfred-ghostty-launch</string>
+</dict>
+</plist>

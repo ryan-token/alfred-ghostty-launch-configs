@@ -1,0 +1,9 @@
+{
+  "name": "Work",
+  "description": "The projects I open every morning",
+  "tabs": [
+    { "title": "API", "cwd": "~/code/api", "focus": true },
+    { "title": "Web", "cwd": "~/code/web" },
+    { "title": "Infra", "cwd": "~/code/infra" }
+  ]
+}

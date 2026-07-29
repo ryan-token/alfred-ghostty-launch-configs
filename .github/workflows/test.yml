@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Ghostty is not installed on the runner, so the tests that need it report as
+      # skipped and the missing Ghostty path is exercised instead.
+      - name: Run tests
+        run: ./tests/run.js

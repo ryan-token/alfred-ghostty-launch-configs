@@ -1,0 +1,17 @@
+{
+  "name": "Review",
+  "description": "One window per repository being reviewed",
+  "windows": [
+    {
+      "tabs": [
+        { "title": "API", "cwd": "~/code/api", "command": "git status" },
+        { "title": "API Tests", "cwd": "~/code/api/test" }
+      ]
+    },
+    {
+      "tabs": [
+        { "title": "Web", "cwd": "~/code/web", "command": "git status", "focus": true }
+      ]
+    }
+  ]
+}

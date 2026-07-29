@@ -1,0 +1,15 @@
+{
+  "name": "Dev Server",
+  "description": "Editor, server and logs side by side",
+  "tabs": [
+    {
+      "title": "App",
+      "cwd": "~/code/api",
+      "splits": [
+        { "direction": "right", "cwd": "~/code/api", "command": "npm run dev" },
+        { "direction": "down", "cwd": "~/code/api", "command": "npm run test:watch" }
+      ]
+    },
+    { "title": "Logs", "cwd": "~/code/api", "command": "tail -f log/development.log" }
+  ]
+}
