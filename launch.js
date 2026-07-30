@@ -23,7 +23,9 @@ const env = name => {
   return value.isNil() ? '' : value.js
 }
 
-const expandPath = path => path.replace(/^~(?=\/|$)/, HOME)
+// Paths arrive from the folder picker or straight out of a layout file, so they are
+// canonicalised before anything is joined onto them.
+const expandPath = path => path.trim().replace(/^~(?=\/|$)/, HOME).replace(/(?!^)\/+$/, '')
 
 const configsDir = () => expandPath(env('configs_dir') || DEFAULT_CONFIGS_DIR)
 

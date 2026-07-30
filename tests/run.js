@@ -154,6 +154,11 @@ test('reports a layout that is not a JSON object', () => {
   items.forEach(item => assertContains(item.subtitle, 'should contain a JSON object', item.title))
 }, { requiresGhostty: true })
 
+test('accepts a layouts folder with a trailing slash', () => {
+  const configs = makeFixture({ 'a.json': layout({ name: 'Trailing', tabs: [{ cwd: '~' }] }) })
+  assertEqual(listItems(`${configs}/`).map(item => item.title), ['Trailing'], 'titles')
+}, { requiresGhostty: true })
+
 test('ignores files that are not layouts', () => {
   const configs = makeFixture({
     'notes.txt': 'ignore me',

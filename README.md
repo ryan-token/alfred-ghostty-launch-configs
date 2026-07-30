@@ -96,7 +96,7 @@ If a layout file contains invalid JSON it still shows up in Alfred, with the par
 Open the workflow's configuration in Alfred to change:
 
 - **Keyword**, `layouts` by default
-- **Layouts Folder**, `~/.config/alfred-ghostty-launch/configs` by default
+- **Layouts Folder**, a folder picker defaulting to `~/.config/alfred-ghostty-launch/configs`
 
 ## Building from source
 
