@@ -124,13 +124,13 @@ The tests run both scripts the way Alfred runs them, against throwaway layout fo
 
 Reading a layout folder needs Ghostty present, so those tests report as skipped when it is missing, which is what happens on CI. The missing Ghostty path is checked there instead.
 
-Opening a layout is checked separately, because it drives Ghostty for real and opens a window before closing it again:
+Two checks are kept separate because they cannot be made side effect free. One opens a real Ghostty window before closing it again, and one opens a layout file in whatever editor claims `.json`:
 
 ```sh
 ./tests/run.js --integration
 ```
 
-That one is worth running after a Ghostty upgrade, since it is the only check that the AppleScript dictionary still behaves the way the workflow expects.
+Worth running after a Ghostty upgrade, since the window check is the only one that confirms the AppleScript dictionary still behaves the way the workflow expects.
 
 ## License
 
