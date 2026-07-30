@@ -23,7 +23,9 @@ const env = name => {
   return value.isNil() ? '' : value.js
 }
 
-const expandPath = path => path.replace(/^~(?=\/|$)/, HOME)
+// Paths arrive from the folder picker or straight out of a layout file, so they are
+// canonicalised before anything is joined onto them.
+const expandPath = path => path.trim().replace(/^~(?=\/|$)/, HOME).replace(/(?!^)\/+$/, '')
 
 const configsDir = () => expandPath(env('configs_dir') || DEFAULT_CONFIGS_DIR)
 
@@ -42,8 +44,10 @@ const ghosttyProblem = () => {
   return `Ghostty ${version || '(unknown version)'} is too old, ${MINIMUM_VERSION.join('.')} or later is required`
 }
 
-const readLayout = target => {
-  const path = target.endsWith('.json') ? expandPath(target) : `${configsDir()}/${target}.json`
+const layoutPath = target =>
+  target.endsWith('.json') ? expandPath(target) : `${configsDir()}/${target}.json`
+
+const readLayout = path => {
   const contents = $.NSString.stringWithContentsOfFileEncodingError(path, $.NSUTF8StringEncoding, null)
   if (contents.isNil()) throw new Error(`No layout at ${path}`)
 
@@ -51,7 +55,7 @@ const readLayout = target => {
   if (layout === null || typeof layout !== 'object' || Array.isArray(layout)) {
     throw new Error(`${path} should contain a JSON object`)
   }
-  return { path, layout }
+  return layout
 }
 
 const windowsOf = layout => {
@@ -115,6 +119,8 @@ const openLayout = layout => {
 }
 
 const reveal = path => {
+  if (!$.NSFileManager.defaultManager.fileExistsAtPath(path)) throw new Error(`Nothing to open at ${path}`)
+
   const workspace = $.NSWorkspace.sharedWorkspace
   const url = $.NSURL.fileURLWithPath(path)
   // Falls back to Finder when nothing on the machine claims .json files.
@@ -140,8 +146,11 @@ function run(argv) {
   const target = argv[0]
   if (!target) throw new Error('No layout given')
 
-  const { path, layout } = readLayout(target)
+  // Resolved without reading the file, so a layout whose JSON is broken can still be opened.
+  const path = layoutPath(target)
   if (action === 'edit') return reveal(path)
+
+  const layout = readLayout(path)
 
   const problem = ghosttyProblem()
   if (problem) throw new Error(problem)

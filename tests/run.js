@@ -154,6 +154,11 @@ test('reports a layout that is not a JSON object', () => {
   items.forEach(item => assertContains(item.subtitle, 'should contain a JSON object', item.title))
 }, { requiresGhostty: true })
 
+test('accepts a layouts folder with a trailing slash', () => {
+  const configs = makeFixture({ 'a.json': layout({ name: 'Trailing', tabs: [{ cwd: '~' }] }) })
+  assertEqual(listItems(`${configs}/`).map(item => item.title), ['Trailing'], 'titles')
+}, { requiresGhostty: true })
+
 test('ignores files that are not layouts', () => {
   const configs = makeFixture({
     'notes.txt': 'ignore me',
@@ -197,6 +202,13 @@ test('fails when the layout file is missing', () => {
   assertContains(result.output, `No layout at ${configs}/nope.json`, 'message')
 })
 
+test('fails clearly when asked to edit a layout that is not there', () => {
+  const configs = makeFixture({})
+  const result = runScript('launch.js', { args: 'ghost', env: { configs_dir: configs, action: 'edit' } })
+  assertEqual(result.status !== 0, true, 'exit status')
+  assertContains(result.output, `Nothing to open at ${configs}/ghost.json`, 'message')
+})
+
 test('fails when a layout has neither windows nor tabs', () => {
   const configs = makeFixture({ 'empty.json': layout({ name: 'Empty' }) })
   const result = runScript('launch.js', { args: 'empty', env: { configs_dir: configs } })
@@ -227,6 +239,14 @@ test('keeps an existing example when scaffolding again', () => {
 
 if (INTEGRATION) {
   console.log('integration')
+
+  // Editing is the one action a broken layout must still support, and the only way to prove
+  // it is to let the file actually open in whatever editor claims .json.
+  test('opens a layout for editing even when its JSON is broken', () => {
+    const configs = makeFixture({ 'broken.json': '{ oops' })
+    const result = runScript('launch.js', { args: 'broken', env: { configs_dir: configs, action: 'edit' } })
+    assertEqual(result.status, 0, `exit status (${result.output})`)
+  })
 
   test('opens a layout with titles, directories, splits and focus', () => {
     const marker = 'AGL Integration Fixture'
